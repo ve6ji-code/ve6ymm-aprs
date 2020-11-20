@@ -1,13 +1,13 @@
-Reference ID    : CE6C0083 (ntp1.torix.ca)
-Stratum         : 2
-Ref time (UTC)  : Fri Nov 20 14:57:42 2020
-System time     : 0.001174087 seconds fast of NTP time
-Last offset     : +0.000209437 seconds
-RMS offset      : 0.000628525 seconds
-Frequency       : 21.381 ppm fast
-Residual freq   : -0.000 ppm
-Skew            : 0.047 ppm
-Root delay      : 0.052823380 seconds
-Root dispersion : 0.001892002 seconds
-Update interval : 1037.8 seconds
+Reference ID    : CDCE4607 (serenity.baxterit.net)
+Stratum         : 3
+Ref time (UTC)  : Fri Nov 20 19:51:38 2020
+System time     : 0.000313545 seconds fast of NTP time
+Last offset     : -0.000217739 seconds
+RMS offset      : 0.001203513 seconds
+Frequency       : 21.641 ppm fast
+Residual freq   : -0.014 ppm
+Skew            : 0.378 ppm
+Root delay      : 0.051710930 seconds
+Root dispersion : 0.003247384 seconds
+Update interval : 1041.7 seconds
 Leap status     : Normal

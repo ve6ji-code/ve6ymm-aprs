@@ -23,11 +23,12 @@
   </p>
   </div>
   <div class="menu">
-    <p><button id="aprxrf" class="btn">APRX RF Log</button></p>
-    <p><button id="aprxint" class="btn">APRX Interface Log</button></p>
+    <p><button id="aprxrf" class="btn">RF Log</button></p>
+    <p><button id="aprxint" class="btn">TTY Log</button></p>
     <p><button id="temp" class="btn">CPU Temp</button></p>
     <p><button id="drive" class="btn">Drive Info</button></p>
     <p><button id="mem" class="btn">Memory Info</button></p>
+    <p><button id="user" class="btn">User Info</button></p>
    </div>
   <div class="main">
   </div>
@@ -92,7 +93,18 @@
         }
       });
     });
-    
+   $("#user").click(function(){
+      $.ajax({
+        url : "scripts/user_info.php",
+        dataType: "text",
+        success : function (data) {
+            var lines = data.split('\n'),
+                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+            $(".main").html(htmlLines);
+
+        }
+      });
+    });    
   }); 
 
 </script>
