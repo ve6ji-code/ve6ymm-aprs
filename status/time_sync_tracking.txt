@@ -1,13 +1,13 @@
 Reference ID    : CDCE4607 (serenity.baxterit.net)
 Stratum         : 3
-Ref time (UTC)  : Fri Nov 20 19:51:38 2020
-System time     : 0.000313545 seconds fast of NTP time
-Last offset     : -0.000217739 seconds
-RMS offset      : 0.001203513 seconds
-Frequency       : 21.641 ppm fast
-Residual freq   : -0.014 ppm
-Skew            : 0.378 ppm
-Root delay      : 0.051710930 seconds
-Root dispersion : 0.003247384 seconds
-Update interval : 1041.7 seconds
+Ref time (UTC)  : Fri Nov 20 21:17:33 2020
+System time     : 0.000098305 seconds slow of NTP time
+Last offset     : -0.000168836 seconds
+RMS offset      : 0.000956266 seconds
+Frequency       : 21.636 ppm fast
+Residual freq   : -0.004 ppm
+Skew            : 0.232 ppm
+Root delay      : 0.051950697 seconds
+Root dispersion : 0.002104897 seconds
+Update interval : 1036.3 seconds
 Leap status     : Normal

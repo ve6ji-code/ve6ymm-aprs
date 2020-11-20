@@ -34,30 +34,27 @@
   </div>
   </body>
 <script>
+var button_press_number = 0;
   $(document).ready(function(){
     $("#aprxrf").click(function(){
-      $.ajax({
-        url : "scripts/aprx_rf.php",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
-        }
-      });
+      button_press_number = 1;
+      rf_log();
     });
+
     $("#aprxint").click(function(){
+	button_press_number = 2;
       $.ajax({
         url : "scripts/aprx_log.php",
         dataType: "text",
         success : function (data) {
             var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
             $(".main").html(htmlLines);
         }
       });
     });
     $("#temp").click(function(){
+         button_press_number = 3;
       $.ajax({
         url : "status/cpu_temp_avg.txt",
         dataType: "text",
@@ -70,6 +67,7 @@
       });
     });
     $("#drive").click(function(){
+         button_press_number = 4;
       $.ajax({
         url : "scripts/drives.php",
         dataType: "text",
@@ -82,6 +80,7 @@
       });
     });
     $("#mem").click(function(){
+         button_press_number = 5;
       $.ajax({
         url : "scripts/mem.php",
         dataType: "text",
@@ -94,6 +93,7 @@
       });
     });
    $("#user").click(function(){
+         button_press_number = 6;
       $.ajax({
         url : "scripts/user_info.php",
         dataType: "text",
@@ -107,5 +107,22 @@
     });    
   }); 
 
+  function rf_log(){
+    if(button_press_number == 1){
+        $.ajax({
+        url : "scripts/aprx_rf.php",
+        dataType: "text",
+        success : function (data) {
+            var lines = data.split('\n'),
+                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+                $(".main").html(htmlLines);
+                }
+        }).then(function(){ 
+	
+        console.log(button_press_number);
+        setTimeout(rf_log, 5000); 
+    });
+    }
+}
 </script>
 </html> 
