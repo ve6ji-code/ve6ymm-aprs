@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/ve6mjl.css">
-</head>
-<body>
-<div class="header">
-  <p class="center">VE6YMM Fort McMurray Amateur Radio Club</p>
-  <p class="center">Stony Mountain APRS Digipeater & iGate</p>
-  <p class="center"><a href="https://time.is/UTC" id="time_is_link" rel="nofollow" style="font-size:15px;color:408c99">Time in UTC:</a>
-<span id="UTC_za00" style="font-size:15px;"></span>
-<script src="//widget.time.is/t.js"></script>
-<script>
-time_is_widget.init({UTC_za00:{}});
-</script>
-</p>
-</div>
-<div class="menu">
-  <p><button id="aprxrf" class="btn">APRX RF Log</button></p>
-  <p><button id="aprxint" class="btn">APRX Interface Log</button></p>
-  <p><button id="temp" class="btn">CPU Temp</button></p>
-  <p><button id="drive" class="btn">Drive Info</button></p>
-  <p><button id="mem" class="btn">Memory Info</button></p>
- </div>
-<div class="main">
-</div>
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/ve6mjl.css">
+  </head>
+  <body>
+  <div class="header">
+    <p class="center">VE6YMM Fort McMurray Amateur Radio Club</p>
+    <p class="center">Stony Mountain APRS Digipeater & iGate</p>
+    <p class="center"><a href="https://time.is/UTC" id="time_is_link" rel="nofollow" style="font-size:15px;color:408c99">Time in UTC:</a>
+  <span id="UTC_za00" style="font-size:15px;"></span>
+  <script src="//widget.time.is/t.js"></script>
+  <script>
+  time_is_widget.init({UTC_za00:{}});
+  </script>
+  </p>
+  </div>
+  <div class="menu">
+    <p><button id="aprxrf" class="btn">APRX RF Log</button></p>
+    <p><button id="aprxint" class="btn">APRX Interface Log</button></p>
+    <p><button id="temp" class="btn">CPU Temp</button></p>
+    <p><button id="drive" class="btn">Drive Info</button></p>
+    <p><button id="mem" class="btn">Memory Info</button></p>
+   </div>
+  <div class="main">
+  </div>
+  </body>
 <script>
   $(document).ready(function(){
     $("#aprxrf").click(function(){
