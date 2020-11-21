@@ -114,6 +114,7 @@ var button_press_number = 0;
         dataType: "text",
         success : function (data) {
             var lines = data.split('\n'),
+		lines = lines.reverse(),
                 htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
                 $(".main").html(htmlLines);
                 }
