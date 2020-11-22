@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>VE6YMM APRS iGate Digipeater</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8"/>
-    <meta name="description" content="VE6YMM APRS iGate Digipeater">
-    <meta name="author" content="ve6ji">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/ve6mjl.css">
-  </head>
-  <body>
+
+<head>
+  <title>VE6YMM APRS iGate Digipeater</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="description" content="VE6YMM APRS iGate Digipeater">
+  <meta name="author" content="ve6ji">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/ve6mjl.css">
+</head>
+
+<body>
   <div class="header">
     <p class="center">VE6YMM Fort McMurray Amateur Radio Club</p>
     <p class="center">Stony Mountain APRS Digipeater & iGate</p>
-    <p class="center"><a href="https://time.is/UTC" id="time_is_link" rel="nofollow" style="font-size:15px;color:408c99">Time in UTC:</a>
-  <span id="UTC_za00" style="font-size:15px;"></span>
-  <script src="//widget.time.is/t.js"></script>
-  <script>
-  time_is_widget.init({UTC_za00:{}});
-  </script>
-  </p>
+    <p class="center"><a href="https://time.is/UTC" id="time_is_link" rel="nofollow"
+        style="font-size:15px;color:408c99">Time in UTC:</a>
+      <span id="UTC_za00" style="font-size:15px;"></span>
+      <script src="//widget.time.is/t.js"></script>
+      <script>
+        time_is_widget.init({ UTC_za00: {} });
+      </script>
+    </p>
   </div>
   <div class="menu">
     <p><button id="aprxrf" class="btn">RF Log</button></p>
@@ -29,101 +32,120 @@
     <p><button id="drive" class="btn">Drive Info</button></p>
     <p><button id="mem" class="btn">Memory Info</button></p>
     <p><button id="user" class="btn">User Info</button></p>
-   </div>
+    <p id="heard"> gg</p>
+  </div>
   <div class="main">
   </div>
-  </body>
+</body>
+
 <script>
-var button_press_number = 0;
-  $(document).ready(function(){
-    $("#aprxrf").click(function(){
-      button_press_number = 1;
+  var flag = 0;
+  $(document).ready(function () {
+    heard();
+
+    $("#aprxrf").click(function () {
+      flag = 1;
       rf_log();
     });
 
-    $("#aprxint").click(function(){
-	button_press_number = 2;
+    $("#aprxint").click(function () {
+      flag = 2;
       $.ajax({
-        url : "scripts/aprx_log.php",
+        url: "scripts/aprx_log.php",
         dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
+        success: function (data) {
+          var lines = data.split('\n'),
             htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
+          $(".main").html(htmlLines);
         }
       });
     });
-    $("#temp").click(function(){
-         button_press_number = 3;
-      $.ajax({
-        url : "status/cpu_temp_avg.txt",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
-            
-        }
-      });
-    });
-    $("#drive").click(function(){
-         button_press_number = 4;
-      $.ajax({
-        url : "scripts/drives.php",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
-            
-        }
-      });
-    });
-    $("#mem").click(function(){
-         button_press_number = 5;
-      $.ajax({
-        url : "scripts/mem.php",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
-            
-        }
-      });
-    });
-   $("#user").click(function(){
-         button_press_number = 6;
-      $.ajax({
-        url : "scripts/user_info.php",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-            $(".main").html(htmlLines);
 
+    $("#temp").click(function () {
+      flag = 3;
+      $.ajax({
+        url: "status/cpu_temp_avg.txt",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+          $(".main").html(htmlLines);
         }
       });
-    });    
-  }); 
-
-  function rf_log(){
-    if(button_press_number == 1){
-        $.ajax({
-        url : "scripts/aprx_rf.php",
-        dataType: "text",
-        success : function (data) {
-            var lines = data.split('\n'),
-		lines = lines.reverse(),
-                htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
-                $(".main").html(htmlLines);
-                }
-        }).then(function(){ 
-	
-        console.log(button_press_number);
-        setTimeout(rf_log, 5000); 
     });
+
+    $("#drive").click(function () {
+      flag = 4;
+      $.ajax({
+        url: "scripts/drives.php",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+          $(".main").html(htmlLines);
+        }
+      });
+    });
+
+    $("#mem").click(function () {
+      flag = 5;
+      $.ajax({
+        url: "scripts/mem.php",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+          $(".main").html(htmlLines);
+        }
+      });
+    });
+
+    $("#user").click(function () {
+      flag = 6;
+      $.ajax({
+        url: "scripts/user_info.php",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+          $(".main").html(htmlLines);
+        }
+      });
+    });
+  });
+
+  function rf_log() {
+    if (flag == 1) {
+      heard();
+      $.ajax({
+        url: "scripts/aprx_rf.php",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            lines = lines.reverse(),
+            htmlLines = '<p>' + lines.join('</p><p>') + '</p>';
+          $(".main").html(htmlLines);
+        }
+      }).then(function () {
+        setTimeout(rf_log, 5000);
+      });
     }
-}
+  }
+
+  function heard() {
+      $.ajax({
+        url: "scripts/callsigns.php",
+        dataType: "text",
+        success: function (data) {
+          var lines = data.split('\n'),
+            htmlLines = 'Unique Stations:' + lines.join('<br>');
+          $("#heard").html(htmlLines);
+        }
+      });
+      
+    }
+  
+
 </script>
-</html> 
+
+</html>
