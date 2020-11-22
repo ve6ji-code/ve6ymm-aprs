@@ -18,7 +18,7 @@ def main():
     results = [x.upper() for x in results]
     # Pare results to contain only unique callsigns
     unique(results)
-    
+
 
 
 def unique(my_list):
@@ -29,7 +29,7 @@ def unique(my_list):
     for item in my_list:
         # check if exists in unique_list or not
         if item not in unique_list:
-            unique_list.append(x)
+            unique_list.append(item)
     # print list
     for item in unique_list:
         print(item)
