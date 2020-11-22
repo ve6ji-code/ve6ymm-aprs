@@ -1,5 +1,0 @@
- 20:54:01 up 1 day,  2:31,  3 users,  load average: 0.00, 0.02, 0.03
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-pi       tty1     -                Sat18   26:31m  0.16s  0.12s -zsh
-pi       pts/1    96.53.194.133    Sat18    0.00s  4.75s  0.07s sshd: pi [priv]     
-pi       pts/3    96.53.194.133    Sat18   26:28m  0.44s  0.44s -zsh
